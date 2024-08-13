@@ -1,0 +1,27 @@
+def classificar_pedido(valor_pedido, dias_para_entrega):
+  """
+  Classifica o pedido com base no valor e no tempo restante para entrega.
+
+  Parâmetros:
+  valor_pedido (float): O valor do pedido em reais.
+  dias_para_entrega (int): O número de dias restantes para a entrega do pedido.
+
+  Retorna:
+  str: A categoria do pedido ("Normal", "Prioritário" ou "Urgente").
+  """
+  # Verifica se o pedido é "Urgente"
+  if valor_pedido > 500 or dias_para_entrega < 4:
+      return "Urgente"
+  # Verifica se o pedido é "Prioritário"
+  elif 100 <= valor_pedido <= 500 or 4 <= dias_para_entrega <= 7:
+      return "Prioritário"
+  # Caso contrário, o pedido é "Normal"
+  else:
+      return "Normal"
+
+# Testes da função
+print(classificar_pedido(50, 10))  # Saída esperada: "Normal"
+print(classificar_pedido(150, 5))  # Saída esperada: "Prioritário"
+print(classificar_pedido(600, 3))  # Saída esperada: "Urgente"
+print(classificar_pedido(80, 6))   # Saída esperada: "Normal"
+print(classificar_pedido(300, 8))  # Saída esperada: "Prioritário"
